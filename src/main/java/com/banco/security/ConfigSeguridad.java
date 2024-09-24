@@ -42,16 +42,12 @@ public class ConfigSeguridad {
         http
             .csrf(csrf -> csrf.disable()) // Deshabilitando CSRF para pruebas (no recomendado en producción)
             .authorizeHttpRequests(authz -> authz
-                .requestMatchers("/login").permitAll() // Permitir acceso a la página de inicio de sesión
                 .requestMatchers("/admin/**").hasRole("ADMINISTRADOR")
                 .requestMatchers("/usuario/**").hasRole("USUARIO")
                 .anyRequest().authenticated()
             )
-            .formLogin(form -> form
-                .loginPage("/login") // Página de inicio de sesión
-                .defaultSuccessUrl("/usuario/saldo", true) // Redirigir a saldo después del inicio
-                .permitAll()); // Permitir acceso a la página de inicio de sesión
-
+            .formLogin(form -> form.defaultSuccessUrl("/home", true)); // Configuración de formLogin
+        
         return http.build();
     }
 }
