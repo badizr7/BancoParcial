@@ -15,35 +15,35 @@ public class Transaccion {
         this.fecha = LocalDateTime.now();
     }
 
-    public String getcuentaOrigen(){
+    public String getCuentaOrigen(){
         return cuentaOrigen;
     }
 
-    public void setcuentaOrigen(){
+    public void setCuentaOrigen(String cuentaOrigen){
         this.cuentaOrigen = cuentaOrigen;
     }
 
-    public String getcuentaDestino(){
+    public String getCuentaDestino(){
         return cuentaDestino;
     }
 
-    public void setcuentaDestino(){
+    public void setCuentaDestino(String cuentaDestino){
         this.cuentaDestino = cuentaDestino;
     }
 
-    public double getmonto(){
+    public double getMonto(){
         return monto;
     }
 
-    public void setmonto(){
+    public void setMonto(double monto){
         this.monto = monto;
     }
 
-    public LocalDateTime getfecha(){
+    public LocalDateTime getFecha(){
         return fecha;
     }
 
-    public void setfecha(){
+    public void setFecha(LocalDateTime fecha){
         this.fecha = fecha;
     }
 }
