@@ -31,7 +31,8 @@ public class ServicioBanco {
                        .orElse(null);
     }
 
-    public void realizarTransferencia(String cuentaOrigen, String cuentaDestino, double monto) {
+    public boolean realizarTransferencia(String cuentaOrigen, String cuentaDestino, double monto) {
+        // Buscar las cuentas origen y destino en la lista de cuentas
         Cuenta origen = cuentas.stream()
                 .filter(cuenta -> cuenta.getNumeroCuenta().equals(cuentaOrigen))
                 .findFirst().orElse(null);
@@ -40,9 +41,15 @@ public class ServicioBanco {
                 .filter(cuenta -> cuenta.getNumeroCuenta().equals(cuentaDestino))
                 .findFirst().orElse(null);
 
+        // Validar que las cuentas existan y que la cuenta origen tenga saldo suficiente
         if (origen != null && destino != null && origen.getSaldoDisponible() >= monto) {
+            // Realizar la transferencia
             origen.setSaldoDisponible(origen.getSaldoDisponible() - monto);
             destino.setSaldoDisponible(destino.getSaldoDisponible() + monto);
+            return true; // Transferencia exitosa
         }
+
+        // Si no se cumplen las condiciones, la transferencia no se realiza
+        return false;
     }
 }
