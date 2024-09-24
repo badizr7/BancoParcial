@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Lista de Cuentas</title>
+</head>
+<body>
+    <h1>Lista de Cuentas Bancarias</h1>
+    <table>
+        <tr>
+            <th>Número de Cuenta</th>
+            <th>Saldo Disponible</th>
+            <th>Titular</th>
+        </tr>
+        <tr th:each="cuenta : ${listaCuentas}">
+            <td th:text="${cuenta.numeroCuenta}"></td>
+            <td th:text="${cuenta.saldoDisponible}"></td>
+            <td th:text="${cuenta.titularCuenta}"></td>
+        </tr>
+    </table>
+    <a href="/logout">Cerrar sesión</a>
+</body>
+</html>
