@@ -46,7 +46,7 @@ public class ConfigSeguridad {
                 .requestMatchers("/usuario/**").hasRole("USUARIO")
                 .anyRequest().authenticated()
             )
-            .formLogin(form -> form.defaultSuccessUrl("/home", true)); // Configuración de formLogin
+            .formLogin(form -> form.defaultSuccessUrl("/default", true)); // Configuración de formLogin
         
         return http.build();
     }
